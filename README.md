@@ -117,33 +117,31 @@ dev_build_plugin  {"dir": "C:/Users/<user>/.dsh/plugins/ui-message-nav"}
 dev_inject_plugin {"dir": "C:/Users/<user>/.dsh/plugins/ui-message-nav"}
 ```
 
-### 方式二：项目自带 bundle 装配
+### 方式二：使用 dsh 命令安装（项目官方方式）
 
-在 profile 的 `package.json` 中添加：
-
-```json
-{
-  "dependencies": {
-    "@dsh-external/ui-message-nav": "link:C:/Users/<user>/.dsh/plugins/ui-message-nav"
-  },
-  "dsh": {
-    "profile": {
-      "bundles": [
-        "@dsh-external/ui-message-nav"
-      ]
-    }
-  }
-}
-```
-
-然后：
+如果你已安装 `dsh` CLI，可以按项目官方教程使用 `dsh plugin` 命令安装：
 
 ```bash
-cd C:\Users\<user>\.dsh\profiles\web
-pnpm install
+# 从本地插件目录安装
+dsh plugin --profile web add C:/Users/<user>/.dsh/plugins/ui-message-nav
+
+# 或从 GitHub 仓库安装
+dsh plugin --profile web add github:xiyue718/dsh-ui-message-nav
 ```
 
-重启 DSH Web。
+安装后启动：
+
+```bash
+dsh --profile web
+```
+
+查看组合配置：
+
+```bash
+dsh --profile web --dump-config
+```
+
+详细命令说明见项目文档：`docs/user/develop/basic/publish.md`。
 
 ## 使用示例
 
